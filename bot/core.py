@@ -3,8 +3,8 @@ from bot.manager.bot_manager import Bot_Manager
 
 def run(user_key=None, sentence=None):
     bm = Bot_Manager()
-    bm.sentence = sentence
-    bm.org_sentence = sentence
+    bm.sentence = sentence.encode('utf-8')
+    bm.org_sentence = bm.sentence
 
     if bm.sentence == '홈':
         bm.response_type = 'home'
