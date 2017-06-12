@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from bot.manager.bot_manager import Bot_Manager
+from elasticsearch import Elasticsearch, helpers
 
 def run(user_key=None, sentence=None):
     bm = Bot_Manager()
-    bm.sentence = sentence.encode('utf-8')
+    bm.sentence = sentence
     bm.org_sentence = bm.sentence
 
     if bm.sentence == '홈':
@@ -14,7 +15,7 @@ def run(user_key=None, sentence=None):
         bm.img_url = 'https://cdn.bulbagarden.net/upload/0/0d/025Pikachu.png'
         bm.response.append('이미지 전달')
     else:
-        bm.response.append('유저키는 {0}, 문장은 {1}'.format(user_key, bm.sentence))
+        bm.get_morph()
 
     res = bm.return_result('배우고 있습니다.')
     return res
