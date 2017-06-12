@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bot.manager.bot_manager import Bot_Manager
 
 def run(user_key=None, sentence=None):
