@@ -16,8 +16,10 @@ def keyboard():
     return json.dumps(mykeyboard, ensure_ascii=False)
 
 @app.route('/message', methods=['POST'])
-def post_message(**kwargs):
-    return json.dumps({'message':{'text' : '멀티캠퍼스 테스트봇 성공!'}}, ensure_ascii=False)
+def post_message():
+    user_message = request.get_json()
+    user_content = user_message['content']
+    return json.dumps({'message':{'text' : user_content}}, ensure_ascii=False)
 
 if __name__ == "__main__":
     app.run(debug=True)
