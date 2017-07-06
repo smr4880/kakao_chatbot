@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from bot.manager.bot_manager import Bot_Manager
-from elasticsearch import Elasticsearch, helpers
 
 def run(user_key=None, sentence=None):
     bm = Bot_Manager()
     bm.sentence = sentence
     bm.org_sentence = bm.sentence
+
+    bt.get_log()
 
     if bm.sentence == '홈':
         bm.response_type = 'home'
