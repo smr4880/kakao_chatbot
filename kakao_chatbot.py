@@ -19,7 +19,6 @@ def keyboard():
 def post_message():
     user_message = request.get_json()
     user_content = user_message['content']
-    print user_content
     return json.dumps({'message':{'text' : user_content}}, ensure_ascii=False)
 
 if __name__ == "__main__":
