@@ -6,8 +6,6 @@ def run(user_key=None, sentence=None):
     bm.sentence = sentence
     bm.org_sentence = bm.sentence
 
-    bm.get_log()
-
     if bm.sentence == '홈':
         bm.response_type = 'home'
         bm.response.append('흠으로')
