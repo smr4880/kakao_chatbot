@@ -18,7 +18,7 @@ class Bot_Manager(object):
         for (prop, default) in prop_defaults.items():
             setattr(self, prop, kwargs.get(prop, default))
 
-        self.client = Elasticsearch('http://fount.iptime.org:29200')
+        #self.client = Elasticsearch('http://fount.iptime.org:29200')
 
 	"""
     def get_morph(self):

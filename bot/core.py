@@ -8,7 +8,7 @@ def run(user_key=None, sentence=None):
 
     if bm.sentence == '홈':
         bm.response_type = 'home'
-        bm.response.append('흠으로')
+        bm.response.append('홈으로')
     elif bm.sentence == '이미지':
         bm.response_type = 'img'
         bm.img_url = 'https://cdn.bulbagarden.net/upload/0/0d/025Pikachu.png'
