@@ -21,6 +21,8 @@ def post_message():
     user_message = request.get_json()
     user_content = user_message['content']
     user_key = user_message['user_key']
+    print('user_content: %s' %user_content)
+    
     response = run(user_key, user_content)
     image_file = response.get('img')
 
