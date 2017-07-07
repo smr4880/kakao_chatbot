@@ -20,6 +20,7 @@ class Bot_Manager(object):
 
         self.client = Elasticsearch('http://fount.iptime.org:29200')
 
+	"""
     def get_morph(self):
         t = Twitter()
         print(self.sentence)
@@ -31,6 +32,7 @@ class Bot_Manager(object):
         if docs != []:
             doc = docs[0]
             self.response.append(doc['_source']['answer'])
+        """
 
     def return_result(self, basic_text):
         if self.response == []:
