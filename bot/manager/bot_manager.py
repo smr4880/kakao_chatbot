@@ -33,8 +33,8 @@ class Bot_Manager(object):
             self.response.append(doc['_source']['answer'])
             
     def get_answer(self):
-    	query = {"query":{"match": {"question": {"query":self.sentence, "minimum_should_match": "80%"}}}}
-    	page = self.client.search(index='multicampus', doc_type='clien_qna', body=query, size=1)
+		query = {"query":{"match": {"question": {"query":self.sentence, "minimum_should_match": "80%"}}}}
+		page = self.client.search(index='multicampus', doc_type='clien_qna', body=query, size=1)
 		docs = page['hits']['hits']
 		if docs != []:
 			doc = docs[0]
