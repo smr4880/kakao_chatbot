@@ -31,6 +31,14 @@ class Bot_Manager(object):
         if docs != []:
             doc = docs[0]
             self.response.append(doc['_source']['answer'])
+            
+    def get_answer(self):
+    	query = {"query":{"match": {"question":self.sentence}}, "minimum_should_match": "80%"}
+    	page = self.client.search(index='multicampus', doc_type='clien_qna', body=query, size=1)
+		docs = page['hits']['hits']
+		if docs != []:
+			doc = docs[0]
+			self.response.append(doc['_source']['answer'])
 
     def return_result(self, basic_text):
         if self.response == []:
