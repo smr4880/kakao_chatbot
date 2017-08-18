@@ -19,5 +19,5 @@ def run(user_key=None, sentence=None):
         #bm.response.append('유저키는 {0}, 문장은 {1}'.format(user_key, bm.sentence))
         bm.get_answer()
 
-    res = bm.return_result('배우고 있습니다.')
+    res = bm.return_result()
     return res

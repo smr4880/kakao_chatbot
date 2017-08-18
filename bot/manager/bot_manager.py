@@ -18,7 +18,7 @@ class Bot_Manager(object):
         for (prop, default) in prop_defaults.items():
             setattr(self, prop, kwargs.get(prop, default))
 
-        self.client = Elasticsearch("http://127.0.0.1:9200/")
+        self.client = Elasticsearch("http://192.168.0.8:9200/")
 
     def get_morph(self):
         t = Twitter()
@@ -40,9 +40,9 @@ class Bot_Manager(object):
 			doc = docs[0]
 			self.response.append(doc['_source']['answer'])
 
-    def return_result(self, basic_text):
+    def return_result(self):
         if self.response == []:
-            text = basic_text
+            text = '배우고 있습니다.'
         else:
             text = '\n'.join(self.response)
 

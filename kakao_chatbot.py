@@ -23,8 +23,7 @@ def post_message():
     user_key = user_message['user_key']
     print('user_content: %s' %user_content)
     
-    response = run(user_key, user_content)
-    image_file = response.get('img')
+    response = run(user_key, user_content) ##
 
     reply_message = response.get('text', ' ')
     reply_type = response.get('type', 'home') #type이 없을때 default = home
@@ -41,14 +40,15 @@ def post_message():
             "message": response_message,
             "keyboard": {"type": "buttons", "buttons": button_label_list}}
         , ensure_ascii=False)
+        
     elif reply_type == 'img':
         response_message['photo'] = {
-            'url': image_file,
+            'url': response.get('img'),
             'width': 640,
             'height': 480
         }
 
-    print('response from rosebot: %s' % response)
+    print('response from bot: %s' % response)
     print('final response: %s' % response_message)
 
     return json.dumps({'message': response_message}, ensure_ascii=False)
