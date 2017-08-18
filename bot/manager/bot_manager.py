@@ -38,7 +38,7 @@ class Bot_Manager(object):
         docs = page['hits']['hits']
         if docs != []:
         	doc = docs[0]
-			self.response.append(doc['_source']['answer'])
+        	self.response.append(doc['_source']['answer'])
 
     def return_result(self):
         if self.response == []:
