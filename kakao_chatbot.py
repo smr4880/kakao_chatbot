@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
 from flask import request
-from bot.core import run
+from bot.core import main_process
 import json
 
 app = Flask(__name__)
@@ -23,7 +23,7 @@ def post_message():
     user_key = user_message['user_key']
     print('user_content: %s' %user_content)
     
-    response = run(user_key, user_content) ##
+    response = main_process(user_key, user_content) ##
 
     reply_message = response.get('text', ' ')
     reply_type = response.get('type', 'home') #type이 없을때 default = home
