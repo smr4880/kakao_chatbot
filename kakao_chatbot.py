@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-from flask import Flask
+from app import app
 from flask import request
 from bot.core import main_process
 import json
 
-app = Flask(__name__)
 
 @app.route('/')
 def hello():
@@ -54,6 +53,6 @@ def post_message():
     return json.dumps({'message': response_message}, ensure_ascii=False)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
 
