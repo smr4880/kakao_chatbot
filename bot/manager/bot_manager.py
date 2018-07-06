@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from konlpy.tag import Twitter
+#from konlpy.tag import Twitter
 from elasticsearch import Elasticsearch, helpers
 import os, re
 
@@ -19,7 +19,7 @@ class Bot_Manager(object):
             setattr(self, prop, kwargs.get(prop, default))
 
         #self.client = Elasticsearch("http://fount.iptime.org:29200")
-
+    '''
     def get_morph(self):
         t = Twitter()
         print(self.sentence)
@@ -39,7 +39,7 @@ class Bot_Manager(object):
         if docs != []:
         	doc = docs[0]
         	self.response.append(doc['_source']['answer'])
-
+    '''
     def return_result(self):
         if self.response == []:
             text = '배우고 있습니다.'

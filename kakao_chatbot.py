@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
-from app import app
+from app import app as application
 from flask import request
 from bot.core import main_process
 import json
 
 
-@app.route('/')
+@application.route('/')
 def hello():
     return "hello, world!"
 
 
-@app.route('/keyboard')
+@application.route('/keyboard')
 def keyboard():
     mykeyboard = {'type': 'buttons', 'buttons': ["버튼 1","버튼 2","버튼 3"]}
     return json.dumps(mykeyboard, ensure_ascii=False)
-
+'''
 @app.route('/message', methods=['POST'])
 def post_message():
     user_message = request.get_json()
@@ -51,8 +51,9 @@ def post_message():
     print('final response: %s' % response_message)
 
     return json.dumps({'message': response_message}, ensure_ascii=False)
+'''
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=8080)
 
 
