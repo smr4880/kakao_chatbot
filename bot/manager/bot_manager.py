@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from konlpy.tag import Twitter
-from elasticsearch import Elasticsearch, helpers
+#from konlpy.tag import Twitter
+#from elasticsearch import Elasticsearch, helpers
 import os, re
 
 class Bot_Manager(object):
@@ -8,7 +8,6 @@ class Bot_Manager(object):
         prop_defaults = {
             "BASE_DIR": os.path.dirname(os.path.abspath(__file__)),
             "sentence": '',
-            "org_sentence": '',
             "user_key": '',
             "response": [],
             "response_type": '',
@@ -31,7 +30,7 @@ class Bot_Manager(object):
         if docs != []:
             doc = docs[0]
             self.response.append(doc['_source']['answer'])
-            
+
     def get_answer(self):
         query = {"query":{"match": {"question": {"query":self.sentence, "minimum_should_match": "80%"}}}}
         page = self.client.search(index='multicampus2', doc_type='clien_qna', body=query, size=1)
