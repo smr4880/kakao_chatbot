@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, jsonify, request
 from bot.core import main_process
@@ -18,13 +17,13 @@ button_label_list = ['피카츄', '추가 예정']
 def hello_world():
     return 'Hello from Flask!'
 
-@app.route('/keyboard')
+@application.route('/keyboard')
 def keyboard():
     mykeyboard = {
         'type': 'buttons',
         'buttons': button_label_list
     }
-    return jsonify(mykeyboard) #, ensure_ascii=False)
+    return jsonify(mykeyboard)
 
 @app.route('/message', methods=['POST'])
 def post_message():
@@ -46,4 +45,4 @@ def post_message():
             'height': 480
         }
 
-    return jsonify({'message': response_message}) #, ensure_ascii=False)
+    return jsonify({'message': response_message})
