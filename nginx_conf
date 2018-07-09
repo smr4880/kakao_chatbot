@@ -1,0 +1,14 @@
+server{ 
+    listen 80;
+    
+    server_name 192.168.122.51;
+
+    location / { 
+	proxy_pass http://192.168.122.51:8080; 
+    } 
+    location /static{ 
+	alias /home/smr4880/kakao_chatbot/static; 
+	proxy_pass http://192.168.122.51:8080; } 
+}
+
+
