@@ -17,7 +17,7 @@ button_label_list = ['피카츄', '추가 예정']
 def hello_world():
     return 'Hello from Flask!'
 
-@application.route('/keyboard')
+@app.route('/keyboard')
 def keyboard():
     mykeyboard = {
         'type': 'buttons',

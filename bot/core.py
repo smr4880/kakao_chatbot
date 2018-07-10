@@ -14,9 +14,8 @@ def main_process(sentence=None):
     elif bm.sentence == '홈으로':
         bm.response_type = 'home'
         bm.response_msg.append('버튼을 눌러주세요.')
-
-    #else:
-        #bm.get_answer()
+    else:
+        bm.get_answer()
 
     res = bm.return_result()
     return res

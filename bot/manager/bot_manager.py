@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #from konlpy.tag import Twitter
-#from elasticsearch import Elasticsearch, helpers
+#from elasticsearch import Elasticsearch
 import os, re
 
 class Bot_Manager(object):
@@ -17,8 +17,8 @@ class Bot_Manager(object):
         for prop, default in prop_defaults.items():
             setattr(self, prop, kwargs.get(prop, default))
 
-        #self.client = Elasticsearch("http://fount.iptime.org:29200")
-	
+        #self.es_client = Elasticsearch("http://adbe18ff.ngrok.io:80")
+
     def get_morph(self):
         t = Twitter()
         print(self.sentence)
@@ -32,13 +32,20 @@ class Bot_Manager(object):
             self.response_msg.append(doc['_source']['answer'])
 
     def get_answer(self):
-        query = {"query":{"match": {"question": {"query":self.sentence, "minimum_should_match": "80%"}}}}
-        page = self.client.search(index='multicampus2', doc_type='clien_qna', body=query, size=1)
-        docs = page['hits']['hits']
-        if docs != []:
+
+        query = {"query": {
+                    "match": {
+                      "question": {"query": "날씨",
+                        "minimum_should_match": "80%"}
+                    }
+                  }
+                }
+        page = self.es_client.search(index='q&a', doc_type='clien', body=query, size=1)
+        docs = page['hits']['hits'] #검색된 문서 목록
+        if docs:
         	doc = docs[0]
         	self.response_msg.append(doc['_source']['answer'])
-	
+
     def return_result(self):
         if not self.response_msg:
             text = '배우고 있습니다.'
